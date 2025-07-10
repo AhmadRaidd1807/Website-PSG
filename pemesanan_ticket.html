@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beli Tiket Stadion</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+
+    /* body {
+      animation: ubahWarna 10s infinite;
+      margin: 0;
+      height: 100vh;
+    } */
+
+    @keyframes ubahWarna {
+      0%   { background-color: rgb(209, 209, 209); }
+      25%  { background-color: rgb(87, 122, 168); }
+      50%  { background-color: #0a0c23; }
+      75%  { background-color: rgb(16, 19, 20); }
+      100% { background-color: rgb(11, 38, 43); }
+    }
+
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      animation: ubahWarna 10s infinite;
+      padding: 20px;
+    }
+
+    .ticket-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .ticket-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1e3c72;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #1e3c72;
+      outline: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background-color: #1e3c72;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #16335c;
+    }
+
+    .success-message {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ticket-form">
+    <h2>Pesan Tiket Stadion</h2>
+    <form onsubmit="return handleSubmit(event)">
+      <div class="form-group">
+        <label for="name">Nama Lengkap</label>
+        <input type="text" id="name" name="name" placeholder="Nama Anda" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Alamat Email</label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="ticketType">Jenis Tiket</label>
+        <select id="ticketType" name="ticketType" required>
+          <option value="">-- Pilih Jenis Tiket --</option>
+          <option value="VIP">VIP</option>
+          <option value="Reguler">Reguler</option>
+          <option value="Tribun">Tribun</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Jumlah Tiket</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" required />
+      </div>
+
+      <div class="form-group">
+        <label for="date">Tanggal Acara</label>
+        <input type="date" id="date" name="date" required />
+      </div>
+
+      <button type="submit" class="btn-submit">Pesan Tiket</button>
+      <div class="success-message" id="successMsg"></div>
+    </form>
+  </div>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const successMsg = document.getElementById('successMsg');
+      successMsg.textContent = `Terima kasih, ${name}! Tiket Anda berhasil dipesan.`;
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>
